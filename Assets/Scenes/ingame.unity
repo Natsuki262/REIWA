@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 43257829}
   - component: {fileID: 43257828}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Enemymanager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ead6ec242ce08343803a0fb12138583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: -3
+  max: -1
   enemy_heisei: {fileID: 3372829705949393245, guid: b3563eb295ea8c54ebc31eee42d2f213,
     type: 3}
 --- !u!4 &43257829
