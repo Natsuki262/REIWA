@@ -22,4 +22,11 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(0, -FallSpeed, 0);
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
