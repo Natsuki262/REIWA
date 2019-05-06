@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     float FallSpeed;
+    [SerializeField]
+    public  GameObject  Explosion;//爆発エフェクトのプレハブ
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "bullet")
         {
             Destroy(gameObject);
+            Instantiate(Explosion, collision.transform.position, Quaternion.identity);
         }
     }
 }
