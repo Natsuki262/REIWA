@@ -7,11 +7,17 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     float FallSpeed;
     [SerializeField]
-    public  GameObject  Explosion;//爆発エフェクトのプレハブ
+    public GameObject Explosion;//爆発エフェクトのプレハブ
+
+   
+
+    public int scoreValue;
+    private ScoreManager sm;
     // Start is called before the first frame update
     void Start()
     {
         //FallSpeed = 0.1f + 0.1f * Random.value;
+        sm = GameObject.Find("Score").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -30,6 +36,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             Instantiate(Explosion, collision.transform.position, Quaternion.identity);
+            sm.AddScore(scoreValue);
         }
     }
 }
