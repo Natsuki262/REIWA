@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         ScoreText.text = Score.ToString();
-        ScoreText.text = "Score"+Score;
+        //ScoreText.text = ":"+Score;
         
     }
     void ScoreInitialize()
@@ -29,6 +29,6 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int scoreValue)
     {
         Score += scoreValue;
-        ScoreText.text = "Score" + Score;
+       ScoreText.text = "  :" + Score;
     }
 }
