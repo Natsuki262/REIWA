@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class Ex_bullet : MonoBehaviour
 {
+    private CircleCollider2D col;
+    private Rigidbody2D rb;
+    [SerializeField]
+    private float Ex_bulletSpeed;
+
+    public float Radius
+    {
+        get { return col.radius; }
+        set { col.radius = value; }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        col = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MoveBullet();
     }
     void MoveBullet()
     {
-        transform.Translate(0, 0.1f, 0);
+       rb.velocity = transform.up.normalized *Ex_bulletSpeed* Time.deltaTime;
+        //transform.Translate(0, 0.5f, 0);
         if (transform.position.y > 5)
         {
             Destroy(gameObject);
@@ -25,9 +37,13 @@ public class Ex_bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        var clingObj = collision.transform.GetComponent<Enemy>();
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            if(clingObj)
+            {
+                clingObj.TryCling(this);
+            }
 
         }
     }

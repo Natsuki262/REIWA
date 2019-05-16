@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject bullet;
+    [SerializeField]
+    private GameObject Ex_bullet;
     // Start is called before the first frame update
     void Start()
     { 
@@ -30,5 +32,11 @@ public class Player : MonoBehaviour
         {
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Instantiate(Ex_bullet, transform.position, Quaternion.identity);
+            
+        }
+
     }
 }

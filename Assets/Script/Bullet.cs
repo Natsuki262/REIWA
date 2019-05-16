@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    
+    [SerializeField]
+    float bulletSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        MoveBullet();
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        MoveBullet();
-    }
     void MoveBullet()
     {
-        transform.Translate(0, 0.1f, 0);
-        if(transform.position.y>5)
+        GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed * Time.deltaTime;
+        if (transform.position.y > 5)
         {
             Destroy(gameObject);
         }
@@ -29,7 +26,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-           
+
         }
     }
 
