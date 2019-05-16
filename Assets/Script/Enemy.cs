@@ -18,7 +18,9 @@ public class Enemy : MonoBehaviour
 
     public int scoreValue;
     private ScoreManager sm;
-
+    [SerializeField]
+    private float DestoroyTimer;
+   public bool TimeFlag=false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -41,7 +43,11 @@ public class Enemy : MonoBehaviour
     }
     void Enemy_fall()
     {
-        transform.Translate(0, -FallSpeed, 0);
+       
+        if(TimeFlag==false)
+        {
+            transform.Translate(0, -FallSpeed, 0);
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -74,7 +80,14 @@ public class Enemy : MonoBehaviour
         {
             transform.parent = exBullet.transform;
             rb.isKinematic = true;
-          
+            Destroy(gameObject, DestoroyTimer);
+            TimeFlag = true;
+            /*if(TimeFlag==true)
+            {
+                Destroy(gameObject, DestoroyTimer);
+                Instantiate(Explosion, col.transform.position, Quaternion.identity);
+            }*/
+            
 
         }
     }

@@ -26,7 +26,7 @@ public class Ex_bullet : MonoBehaviour
     {
         MoveBullet();
     }
-    void MoveBullet()
+    void MoveBullet()//弾を動かすメソッド
     {
        rb.velocity = transform.up.normalized *Ex_bulletSpeed* Time.deltaTime;
         //transform.Translate(0, 0.5f, 0);
